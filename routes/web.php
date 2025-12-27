@@ -17,9 +17,17 @@ Route::get('/showinfo', [App\Http\Controllers\showinfo::class, 'index']) ;
 Route::post('/showinfo', [App\Http\Controllers\showinfo::class, 'store']) ;
 
 Route::namespace('App\Http\Controllers')->group(function(){
-    Route::get('/pokedexs', 'PokedexesController@index');
-    Route::post('/pokedexs', 'PokedexesController@store');
+    // หน้าหลัก และ บันทึกข้อมูลใหม่
+    Route::get('/pokedex', 'PokedexesController@index');  // เอา s ออกเพื่อให้ตรงกับ redirect
+    Route::post('/pokedex', 'PokedexesController@store');
+
+    // หน้าแก้ไขข้อมูล
     Route::get('/pokedex/{id}/edit', 'PokedexesController@edit');
-    Route::post('/pokedex/{id}/update', 'PokedexesController@update');
+
+    // เปลี่ยนจาก POST เป็น PUT ให้ตรงกับ @method('PUT') ใน Blade
+    Route::put('/pokedexs/{id}', 'PokedexesController@update');
+
+    // ลบข้อมูล
     Route::delete('/pokedex/{id}', 'PokedexesController@destroy');
 });
+
