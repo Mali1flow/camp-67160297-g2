@@ -1,6 +1,11 @@
 @extends('template.default')
-
+@section('title','MyView2')
+@section('header','My View 2')
 @section('content')
+    <?php echo "<h1>Hello PHP</h1>";?>
+    <h1><?php echo "Hello PHP2";?></h1>
+    <h1>{{ "Hello php3" }}</h1>
+
     <h1>this is my view 2</h1>
     <input type="text" id="myinput" value="input text value" />
     <button onclick="myfunc()" on>ตรวจสอบ</button>
